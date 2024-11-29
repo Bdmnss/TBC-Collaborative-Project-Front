@@ -1,7 +1,12 @@
+import { Button } from '@/components/ui/button';
 import React from 'react';
 
 const Login: React.FC = () => {
-  return <h2>Login Page</h2>;
+  return (
+    <div>
+      <Button>hello</Button>
+    </div>
+  );
 };
 
 export default Login;
