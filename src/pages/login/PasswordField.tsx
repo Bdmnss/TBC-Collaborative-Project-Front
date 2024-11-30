@@ -40,14 +40,13 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ register, error }) => {
           toggleVisibility={togglePasswordVisibility}
         />
       </div>
+      {error && <span className="mt-1 text-sm text-red-500">{error}</span>}
       <div className="mt-4 flex items-baseline justify-between">
         <Label label="New To Stay Connected?" />
-        <Link to={'/register'} className="font-anek-devanagari text-[15px]">
+        <Link to={'/register'} className="font-anek-devanagari text-primary">
           Sign Up
         </Link>
       </div>
-
-      {error && <span className="mt-1 text-sm text-red-500">{error}</span>}
     </div>
   );
 };

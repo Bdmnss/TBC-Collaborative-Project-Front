@@ -8,8 +8,8 @@ import { inputDefaultStyle, inputWrapperStyles } from '../../useRegisterLogic';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 interface FormDataRegistration {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
   repeatPassword: string;
 }
 
@@ -17,13 +17,19 @@ interface FormInputProps {
   register: UseFormRegister<FormDataRegistration>;
   errors: FieldErrors<FormDataRegistration>;
   label: string;
-  name: keyof FormDataRegistration; 
+  name: keyof FormDataRegistration;
   type: string;
-  password?: string, 
+  password?: string;
   repeatPassword?: string;
 }
 
-export const FormInput: FC<FormInputProps> = ({ register, errors, label, name, type }) => {
+export const FormInput: FC<FormInputProps> = ({
+  register,
+  errors,
+  label,
+  name,
+  type,
+}) => {
   return (
     <div>
       <Label>{label}</Label>
@@ -50,10 +56,10 @@ export const FormInputPassword: FC<FormInputProps> = ({
   label,
   name,
   type,
-  password, 
-  repeatPassword
+  password,
+  repeatPassword,
 }) => {
-const [passwordHide, setPasswordHide] = useState(false);
+  const [passwordHide, setPasswordHide] = useState(false);
   return (
     <div>
       <Label>{label}</Label>
@@ -63,31 +69,36 @@ const [passwordHide, setPasswordHide] = useState(false);
         <img src={lockIcon} alt="Lock" className="mr-3 h-5 w-5" />
         <Input
           {...register(name)}
-          type={passwordHide ? "text" : type}
+          type={passwordHide ? 'text' : type}
           placeholder={label}
           className={`${inputDefaultStyle}`}
         />
         <div onClick={() => setPasswordHide(!passwordHide)}>
-        {passwordHide ? (
-          <img
-            src={viewIcon}
-            alt="view"
-            className="ml-3 h-4 w-4 cursor-pointer"
-          />
-        ) : (
-          <img src={fieye} alt="view" className="ml-3 h-4 w-4 cursor-pointer" />
-        )}
-      </div>
+          {passwordHide ? (
+            <img
+              src={viewIcon}
+              alt="view"
+              className="ml-3 h-4 w-4 cursor-pointer"
+            />
+          ) : (
+            <img
+              src={fieye}
+              alt="view"
+              className="ml-3 h-4 w-4 cursor-pointer"
+            />
+          )}
+        </div>
       </div>
       {errors.email && (
         <span className="text-sm text-red-500">{errors.email.message}</span>
       )}
-      {
-        label === "Repeat password"
-        ? password !== repeatPassword && <span className="text-sm text-red-500">Passwords do not match!</span>
-        : null
-      }
-      
+      {label === 'Repeat password'
+        ? password !== repeatPassword && (
+            <span className="text-sm text-red-500">
+              Passwords do not match!
+            </span>
+          )
+        : null}
     </div>
   );
 };

@@ -20,9 +20,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center font-anek-devanagari">
+    <div className="mt-20 flex items-center justify-center font-anek-devanagari">
       <form className="w-full max-w-md" onSubmit={handleSubmit(onSubmit)}>
-        <Card className="flex h-[420px] w-[400px] flex-col gap-3">
+        <Card className="flex flex-col gap-3 p-5">
           <CardHeader>
             <CardTitle className="mt-2 self-center text-xl">Log in</CardTitle>
           </CardHeader>

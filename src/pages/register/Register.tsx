@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
 import FormTitle from './components/form-title/formTitle';
 import { FormInput, FormInputPassword } from './components/Input/Input';
@@ -7,14 +7,8 @@ import FormLink from './components/form-link/FromLink';
 import useRegistrationLogic from './useRegisterLogic';
 
 const Register: React.FC = () => {
- const {  
-  register,
-  handleSubmit,
-  errors,
-  password,
-  repeatPassword,
-  onSubmit, 
-} = useRegistrationLogic()
+  const { register, handleSubmit, errors, password, repeatPassword, onSubmit } =
+    useRegistrationLogic();
 
   return (
     <div className="mt-[150px]">
@@ -23,7 +17,7 @@ const Register: React.FC = () => {
         action=""
         className="m-auto w-[400px]"
       >
-        <Card className="flex-col items-center justify-center">
+        <Card className="flex-col items-center justify-center font-anek-devanagari">
           <FormTitle>Sign in</FormTitle>
           <CardContent>
             <div className="*:mb-[25px]">
@@ -51,7 +45,7 @@ const Register: React.FC = () => {
                 repeatPassword={repeatPassword}
               />
 
-              <FormLink/>
+              <FormLink />
             </div>
             <div className="flex justify-center">
               <Button className="mb-[30px] w-full" variant="default">
