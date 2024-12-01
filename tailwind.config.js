@@ -4,6 +4,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        custom: '992px',
+      },
       fontFamily: {
         'anek-devanagari': ['"Anek Devanagari"', 'sans-serif'],
       },
