@@ -4,7 +4,9 @@ import Home from './pages/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Header from './layout/Header';
-import Footer from './layout/Footer';
+import BottomBar from './layout/BottomBar';
+import Profile from './pages/profile/Profile';
+import Liderboard from './pages/liderboard/Liderboard';
 
 const App: React.FC = () => {
   return (
@@ -15,9 +17,11 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/liderboard" element={<Liderboard />} />
         </Routes>
       </main>
-      <Footer />
+      <BottomBar />
     </div>
   );
 };

@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const Footer: React.FC = () => {
+const BottomBar: React.FC = () => {
+  const location = useLocation();
   const [activeButton, setActiveButton] = useState<string>('');
 
-  const handleButtonClick = (button: string) => {
-    setActiveButton((prev) => (prev === button ? '' : button));
-  };
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/') {
+      setActiveButton('home');
+    } else if (path === '/profile') {
+      setActiveButton('profile');
+    } else if (path === '/liderboard') {
+      setActiveButton('liderboard');
+    } else {
+      setActiveButton('');
+    }
+  }, [location.pathname]);
 
   return (
-    <footer className="flex gap-[1.5rem]">
-      <div className="custom-lg:gap-10 mx-auto flex gap-[2rem] sm:gap-[7rem] lg:gap-[20rem]">
+    <footer className="flex justify-around lg:hidden">
+      <Link to="/">
         <button
-          onClick={() => handleButtonClick('home')}
           className={`flex cursor-pointer flex-col items-center ${
             activeButton === 'home' ? 'text-[#4E53A2]' : 'text-grey'
           }`}
@@ -25,39 +35,42 @@ const Footer: React.FC = () => {
                 : 'hue-rotate-180 filter'
             }`}
           />
+
           <span
             className={activeButton === 'home' ? 'text-[#4E53A2]' : 'text-grey'}
           >
             Home
           </span>
         </button>
+      </Link>
 
+      <Link to="/liderboard">
         <button
-          onClick={() => handleButtonClick('leaderboard')}
           className={`flex cursor-pointer flex-col items-center ${
-            activeButton === 'leaderboard' ? 'text-[#4E53A2]' : 'text-grey'
+            activeButton === 'liderboard' ? 'text-[#4E53A2]' : 'text-grey'
           }`}
         >
           <img
             src="/icons/leaderboard.svg"
-            alt="leaderboard"
+            alt="liderboard"
             className={`h-6 w-6 ${
-              activeButton === 'leaderboard'
+              activeButton === 'liderboard'
                 ? 'hue-rotate+180 filter'
                 : 'hue-rotate-180 filter'
             }`}
           />
           <span
             className={
-              activeButton === 'leaderboard' ? 'text-[#4E53A2]' : 'text-grey'
+              activeButton === 'liderboard' ? 'text-[#4E53A2]' : 'text-grey'
             }
           >
-            LeaderBoard
+            Liderboard
           </span>
         </button>
+      </Link>
 
+      <Link to="/profile">
         <button
-          onClick={() => handleButtonClick('profile')}
           className={`flex cursor-pointer flex-col items-center lg:hidden ${
             activeButton === 'profile' ? 'text-[#4E53A2]' : 'text-grey'
           }`}
@@ -79,9 +92,9 @@ const Footer: React.FC = () => {
             Profile
           </span>
         </button>
-      </div>
+      </Link>
     </footer>
   );
 };
 
-export default Footer;
+export default BottomBar;

@@ -23,7 +23,7 @@ const FormInput: React.FC<FormInputProps> = ({
       <Label label={label} />
 
       <div
-        className={`flex items-center rounded-md border focus-within:ring-2 ${
+        className={`flex items-center rounded-md border ${
           error ? 'border-red-500' : 'border-gray-300'
         }`}
       >
@@ -31,7 +31,7 @@ const FormInput: React.FC<FormInputProps> = ({
           {...register}
           type={type}
           placeholder={placeholder}
-          className="flex-1 border-none outline-none ring-0 focus-visible:ring-0"
+          className="flex-1 border-none outline-none focus:border-transparent focus:outline-none focus:ring-0 focus-visible:outline-none"
         />
       </div>
       {error && <span className="text-sm text-red-500">{error}</span>}

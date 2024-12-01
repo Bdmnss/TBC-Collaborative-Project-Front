@@ -3,9 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormData } from '@/interfaces/login';
-import FormInput from './FormInput';
-import PasswordField from './PasswordField';
+import FormInput from '../../components/Form Components/FormInput';
+import PasswordField from '../../components/Form Components/PasswordField';
 import { validationSchema } from './validation';
 
 const Login: React.FC = () => {
@@ -13,7 +12,12 @@ const Login: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: yupResolver(validationSchema) });
+  } = useForm({ resolver: yupResolver(validationSchema) });
+
+  interface FormData {
+    email: string;
+    password: string;
+  }
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -36,8 +40,11 @@ const Login: React.FC = () => {
               error={errors.email?.message}
             />
             <PasswordField
+              label="Password"
               register={register('password')}
               error={errors.password?.message}
+              showForgetPassword={true}
+              showSignUpLink={true}
             />
           </CardContent>
 
